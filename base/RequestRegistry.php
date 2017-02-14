@@ -1,8 +1,8 @@
 <?php
 
-namespace sholomka\base;
+namespace Base;
 
-use sholomka\controller\Request;
+use Controller\Request;
 
 class RequestRegistry extends Registry
 {

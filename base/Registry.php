@@ -1,6 +1,6 @@
 <?php
 
-namespace sholomka\base;
+namespace Base;
 
 abstract class Registry
 {

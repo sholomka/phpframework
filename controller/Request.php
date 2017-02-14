@@ -1,10 +1,11 @@
 <?php
 
-namespace sholomka\controller;
+namespace Controller;
 
 class Request
 {
     private $properties;
+    private $feedback = [];
 
     public function __construct()
     {
@@ -31,5 +32,25 @@ class Request
     public function setProperty($key, $val)
     {
         $this->properties[$key] = $val;
+    }
+
+
+    public function addFeedback($msg)
+    {
+
+echo "<pre>"; print_r($this->feedback);
+        array_push($this->feedback, $msg);
+
+    }
+
+    public function getFeedback()
+    {
+        return $this->feedback;
+    }
+
+    public function getFeedbackString($separator = "\n")
+    {
+        echo "<pre>"; print_r($this->feedback);
+        return implode($separator, $this->feedback);
     }
 }

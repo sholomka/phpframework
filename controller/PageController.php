@@ -1,8 +1,8 @@
 <?php
 
-namespace sholomka\controller;
+namespace controller;
 
-use sholomka\base\RequestRegistry;
+use Base\RequestRegistry;
 
 abstract class PageController
 {
