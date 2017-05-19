@@ -2,11 +2,17 @@
 
 namespace Application\Core;
 
+use Application\Core\Registry\ApplicationRegistry;
+use Application\Core\Registry\RequestRegistry;
+use Application\Core\Command\CommandResolver;
+
+
+
 /**
  * Class Controller
  * @package Application\Core
  */
-abstract class Controller
+class Controller
 {
     /**
      * @var
@@ -25,7 +31,9 @@ abstract class Controller
      */
     public static function run()
     {
-
+        $instance = new Controller();
+        $instance->init();
+        $instance->handleRequest();
     }
 
     /**
@@ -33,14 +41,20 @@ abstract class Controller
      */
     public function init()
     {
-
+        $applicationRegistry = ApplicationRegistry::instance();
+        $applicationRegistry->init();
     }
+
 
     /**
      *
      */
     public function handleRequest()
     {
+        $request = RequestRegistry::getRequest();
 
+        $cmdR = new CommandResolver();
+        $cmd = $cmdR->getCommand($request);
+        $cmd->execute($request);
     }
 }

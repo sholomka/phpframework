@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Core;
+namespace Application\Core\Registry;
 
 /**
  * Class Registry - основной реестр

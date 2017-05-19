@@ -1,13 +1,13 @@
 <?php
 
-namespace Application\Core;
+namespace Application\Core\Registry;
 
 use  Application\Exceptions\AppException;
 use  Application\Core\Request;
-use  Application\Core\Registry;
+use  Application\Core\Registry\Registry;
 
 /**
- * Class ApplicationRegistry - основной реест приложения
+ * Class ApplicationRegistry - основной реестр приложения
  * @package Application\Core
  */
 class ApplicationRegistry extends Registry
@@ -45,7 +45,7 @@ class ApplicationRegistry extends Registry
      */
     private function __construct()
     {
-        $this->config = realpath(implode(DIRECTORY_SEPARATOR, [__DIR__, '..', 'config', 'web.xml']));
+        $this->config = realpath(implode(DIRECTORY_SEPARATOR, [APPLICATION_PATH, 'config', 'web.xml']));
     }
 
     /**

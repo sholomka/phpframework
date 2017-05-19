@@ -1,15 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 18.05.2017
- * Time: 13:10
- */
 
 namespace Application\Core\Command;
 
+use Application\Core\Request\Request;
 
-class DefaultCommand
+/**
+ * Class DefaultCommand
+ * @package Application\Core\Command
+ */
+class DefaultCommand extends Command
 {
-
+    public function doExecute(Request $request)
+    {
+        $request->addFeedback('Добро пожаловать в Woo!');
+        include_once(APPLICATION_PATH . 'views' . DIRECTORY_SEPARATOR . 'main_view.php');
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace  Application\Core;
+namespace  Application\Core\Request;
 
 /**
  * Class Request
- * @package Application\Core
+ * @package Application\Core\Request
  */
 class Request
 {
@@ -12,6 +12,11 @@ class Request
      * @var
      */
     private $properties;
+
+    /**
+     * @var array
+     */
+    private $feedback = [];
 
     /**
      * Request constructor.
@@ -58,6 +63,22 @@ class Request
     public function setProperty($key, $val)
     {
         $this->properties[$key] = $val;
+    }
+
+    /**
+     * @param $msg
+     */
+    public function addFeedback($msg)
+    {
+        array_push($this->feedback, $msg);
+    }
+
+    /**
+     * @return array
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
     }
 
     /**

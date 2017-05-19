@@ -1,15 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 19.05.2017
- * Time: 10:20
- */
+
 
 namespace Application\Core\Command;
 
+use Application\Core\Request\Request;
 
-class TestCommand
+
+class TestCommand extends Command
 {
-
+    public function doExecute(Request $request)
+    {
+        $request->addFeedback('Добро пожаловать в Test!');
+        include_once(APPLICATION_PATH . 'views' . DIRECTORY_SEPARATOR . 'test_view.php');
+    }
 }

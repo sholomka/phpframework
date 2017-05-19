@@ -10,9 +10,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "Controller\\": "controller/",
-            "Base\\": "base/"
+            "Application\\Core\\": "application/core",
+            "Application\\Exceptions\\": "application/exceptions"
         }
     },
-    "require": {}
+    "require": {
+        "php" : ">=5.5.9"
+    }
 }

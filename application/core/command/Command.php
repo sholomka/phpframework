@@ -1,15 +1,33 @@
 <?php
+
+namespace Application\Core\Command;
+
+use Application\Core\Request\Request;
+
 /**
- * Created by PhpStorm.
- * User: admin
- * Date: 18.05.2017
- * Time: 12:58
+ * Class Command
+ * @package Application\Core\Command
  */
-
-namespace Application\Core;
-
-
-class Command
+abstract class Command
 {
+    /**
+     * Command constructor.
+     */
+    final public function __construct()
+    {
+    }
 
+    /**
+     * @param Request $request
+     */
+    public function execute(Request $request)
+    {
+        $this->doExecute($request);
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    abstract public function doExecute(Request $request);
 }

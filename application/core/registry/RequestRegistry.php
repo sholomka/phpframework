@@ -1,10 +1,10 @@
 <?php
 
-namespace Application\Core;
+namespace Application\Core\Registry;
 
 use  Application\Exceptions\AppException;
-use  Application\Core\Request;
-use  Application\Core\Registry;
+use  Application\Core\Request\Request;
+use  Application\Core\Registry\Registry;
 
 /**
  * Class RequestRegistry - реестр запросов

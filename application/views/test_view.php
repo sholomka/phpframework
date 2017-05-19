@@ -1,7 +1,13 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: admin
- * Date: 19.05.2017
- * Time: 10:21
- */
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Framework</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Test View</h1>
+</body>
+</html>
+
+
