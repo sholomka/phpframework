@@ -3,6 +3,7 @@
 namespace Application\Core\Command;
 
 use Application\Core\Request\Request;
+use Application\Exceptions\AppException;
 
 /**
  * Class Command
@@ -24,6 +25,7 @@ abstract class Command
     {
         $this->doExecute($request);
     }
+
 
     /**
      * @param Request $request

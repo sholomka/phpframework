@@ -34,6 +34,19 @@ class Controller
         $instance = new Controller();
         $instance->init();
         $instance->handleRequest();
+
+        $mapper = new \Application\Core\VenueMapper();
+//
+//        $venue = $mapper->find(2);
+
+        $venue = new \Application\Core\Venue();
+        $venue->setName('The Likey Lounjge-yy');
+
+        $mapper->insert($venue);
+
+
+        echo "<pre>"; print_r($venue);
+
     }
 
     /**
