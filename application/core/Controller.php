@@ -44,8 +44,19 @@ class Controller
 
         $mapper->insert($venue);
 
+        $venue = $mapper->find($venue->getId());
+
+
+        $venue->setName('test');
+
+        $mapper->update($venue);
+
+
+        $venue = $mapper->find($venue->getId());
 
         echo "<pre>"; print_r($venue);
+
+
 
     }
 

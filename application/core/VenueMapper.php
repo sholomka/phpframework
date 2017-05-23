@@ -18,7 +18,7 @@ class VenueMapper extends Mapper
         parent::__construct();
 
         $this->selectStmt = self::$PDO->prepare("SELECT * FROM users WHERE id=?");
-        $this->updateStmt = self::$PDO->prepare("UPDATE users SET name=?, id=?, WHERE id=?");
+        $this->updateStmt = self::$PDO->prepare("UPDATE users SET name=?, id=? WHERE id=?");
         $this->insertStmt = self::$PDO->prepare("INSERT INTO users (name) values(?)");
     }
 
