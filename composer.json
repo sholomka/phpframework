@@ -1,0 +1,20 @@
+{
+    "name": "sholomka/phpframework",
+    "description": "phpframework",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Yuriy Sholom",
+            "email": "sholomka@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Application\\Core\\": "application/core",
+            "Application\\Exceptions\\": "application/exceptions"
+        }
+    },
+    "require": {
+        "php" : ">=5.5.9"
+    }
+}

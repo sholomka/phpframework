@@ -1,0 +1,143 @@
+<?php
+
+namespace  Application\Core\Request;
+
+/**
+ * Class Request
+ * @package Application\Core\Request
+ */
+class Request
+{
+    /**
+     * @var
+     */
+    private $properties;
+
+    /**
+     * @var array
+     */
+    private $feedback = [];
+
+    /**
+     * Request constructor.
+     */
+    public function __construct()
+    {
+        $this->init();
+    }
+
+    /**
+     * Инициализация объекта запроса
+     */
+    public function init()
+    {
+        if (isset($_SERVER['REQUEST_METHOD'])) {
+            $this->properties = $_REQUEST;
+        }
+
+        $this->setJSONdata();
+    }
+
+    /**
+     * Получение свойств запроса
+     *
+     * @param $key
+     * @param null $default
+     * @return null
+     */
+    public function getProperty($key, $default = null)
+    {
+        if (isset($this->properties[$key])) {
+            return $this->properties[$key];
+        }
+
+        return $default;
+    }
+
+    /**
+     * Установка свойств запроса
+     *
+     * @param $key
+     * @param $val
+     */
+    public function setProperty($key, $val)
+    {
+        $this->properties[$key] = $val;
+    }
+
+    /**
+     * @param $msg
+     */
+    public function addFeedback($msg)
+    {
+        array_push($this->feedback, $msg);
+    }
+
+    /**
+     * @return array
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
+    }
+
+    /**
+     * Получение свойств массива $_SERVER
+     *
+     * @param $key
+     * @return null
+     */
+    public function getServer($key)
+    {
+        if (isset($_SERVER[$key])) {
+            return $_SERVER[$key];
+        }
+
+        return null;
+    }
+
+    /**
+     * Получение части URL
+     *
+     * @param $part
+     * @return null
+     */
+    public function getUrlPart($part)
+    {
+        $routes = explode('/', $this->getServer('REQUEST_URI'));
+
+        if (!empty($routes[$part])) {
+            if (strpos($routes[$part], '?') !== false) {
+                $routes[$part] = array_shift(explode('?', $routes[$part]));
+            }
+
+            return $routes[$part];
+        }
+
+        return null;
+    }
+
+    /**
+     * Проверяет POST запрос или нет
+     *
+     * @return bool
+     */
+    public function isPost()
+    {
+        return $this->getServer('REQUEST_METHOD') === 'POST' ? true : false;
+    }
+
+    /**
+     * Обработка JSON данных с клиента
+     */
+    public function setJSONdata()
+    {
+        if (strpos($this->getServer('CONTENT_TYPE'), 'application/json') !== false) {
+            $properties = json_decode(trim(file_get_contents('php://input')), true);
+            if (!empty($properties)) {
+                $this->properties = array_merge($this->properties, $properties);
+            }
+        }
+    }
+}
+
