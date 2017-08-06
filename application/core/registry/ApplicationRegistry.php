@@ -39,6 +39,7 @@ class ApplicationRegistry extends Registry
      * @var
      */
     private $request;
+    
 
     /**
      * ApplicationRegistry constructor.
